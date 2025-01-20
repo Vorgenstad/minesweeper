@@ -14,6 +14,10 @@ config/name="Minesweeper"
 run/main_scene="res://scenes/board/board.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 
+[gui]
+
+theme/custom="res://styles/theme.tres"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
