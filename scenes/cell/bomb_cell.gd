@@ -1,4 +1,4 @@
-class_name Cell
+class_name BombCell
 extends PanelContainer
 
 func _on_button_pressed() -> void:

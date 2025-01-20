@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://b8oqe8uikpldw"]
 
-[ext_resource type="Script" path="res://scenes/cell/cell.gd" id="1_tybha"]
+[ext_resource type="Script" path="res://scenes/cell/empty_cell.gd" id="1_tybha"]
 
-[node name="Cell" type="PanelContainer"]
+[node name="EmptyCell" type="PanelContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -13,9 +13,9 @@ size_flags_vertical = 3
 script = ExtResource("1_tybha")
 
 [node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
-text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 

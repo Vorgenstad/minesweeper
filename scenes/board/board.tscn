@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bw8cfxu2r8q3y"]
+[gd_scene load_steps=3 format=3 uid="uid://bw8cfxu2r8q3y"]
 
-[ext_resource type="PackedScene" uid="uid://b8oqe8uikpldw" path="res://scenes/cell/cell.tscn" id="1_uknyb"]
+[ext_resource type="PackedScene" uid="uid://b8oqe8uikpldw" path="res://scenes/cell/empty_cell.tscn" id="1_uknyb"]
+[ext_resource type="PackedScene" uid="uid://pya3w8g4v7cw" path="res://scenes/cell/bomb_cell.tscn" id="2_e2put"]
 
 [node name="Board" type="CanvasLayer"]
 
@@ -15,182 +16,183 @@ grow_vertical = 2
 layout_mode = 2
 columns = 10
 
-[node name="Cell" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+layout_mode = 2
+value = 1
+
+[node name="BombCell" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell2" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell2" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell3" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell2" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell4" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell3" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell5" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell3" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell6" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell4" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell7" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell4" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell8" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell5" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell9" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell5" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell10" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell6" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell11" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell6" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell12" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell7" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell13" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell7" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell14" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell8" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell15" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell8" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell16" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell9" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell17" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell9" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell18" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell10" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell19" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell10" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell20" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell11" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell21" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell11" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell22" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell12" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell23" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell12" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell24" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell13" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell25" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell13" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell26" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell14" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell27" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell14" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell28" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell15" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell29" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell15" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell30" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell16" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell31" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell16" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell32" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell17" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell33" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell17" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell34" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell18" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell35" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell18" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell36" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell19" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell37" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell19" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell38" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell20" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell39" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell20" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell40" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell21" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell41" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell21" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell42" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell22" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell43" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell22" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell44" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell23" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell45" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell23" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell46" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell24" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell47" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell24" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell48" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell25" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell49" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell25" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell50" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell26" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell51" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell26" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell52" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell27" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell53" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell27" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell54" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell28" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell55" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell28" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell56" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell29" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell57" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell29" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
 
-[node name="Cell58" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="EmptyCell30" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
-[node name="Cell59" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
-layout_mode = 2
-
-[node name="Cell60" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
+[node name="BombCell30" parent="PanelContainer/GridContainer" instance=ExtResource("2_e2put")]
 layout_mode = 2
