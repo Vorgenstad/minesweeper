@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b533tyow0ytax"]
+
+[ext_resource type="Script" path="res://scenes/game/game.gd" id="1_b7r1f"]
+[ext_resource type="PackedScene" uid="uid://bw8cfxu2r8q3y" path="res://scenes/board/board.tscn" id="1_dcj2p"]
+
+[node name="Game" type="CanvasLayer"]
+script = ExtResource("1_b7r1f")
+
+[node name="Board" parent="." instance=ExtResource("1_dcj2p")]
+
+[connection signal="bomb_pressed" from="Board" to="." method="_on_board_bomb_pressed"]
