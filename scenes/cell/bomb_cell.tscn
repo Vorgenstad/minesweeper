@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://pya3w8g4v7cw"]
+[gd_scene load_steps=3 format=3 uid="uid://pya3w8g4v7cw"]
 
 [ext_resource type="Script" path="res://scenes/cell/bomb_cell.gd" id="1_ynrlo"]
+[ext_resource type="Script" path="res://scenes/cell/cell_button.gd" id="2_nl77o"]
 
 [node name="BombCell" type="PanelContainer"]
 anchors_preset = 15
@@ -22,5 +23,8 @@ vertical_alignment = 1
 [node name="Button" type="Button" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
+button_mask = 3
+script = ExtResource("2_nl77o")
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed_left" from="Button" to="." method="_on_button_pressed_left"]
+[connection signal="pressed_right" from="Button" to="." method="_on_button_pressed_right"]
