@@ -1,6 +1,8 @@
 class_name EmptyCell
 extends Cell
 
+signal pressed(value: int)
+
 @export var value := 0
 
 func _ready() -> void:
@@ -8,3 +10,5 @@ func _ready() -> void:
 
 func _on_button_pressed_left() -> void:
 	%Button.visible = false
+
+	pressed.emit(value)
