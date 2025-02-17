@@ -8,11 +8,8 @@
 script = ExtResource("1_jyebd")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 536.0
+offset_bottom = 266.0
 
 [node name="GridContainer" type="GridContainer" parent="PanelContainer"]
 unique_name_in_owner = true
@@ -186,36 +183,6 @@ value = 1
 layout_mode = 2
 
 [node name="EmptyCell41" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
-layout_mode = 2
-
-[node name="EmptyCell42" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
-layout_mode = 2
-
-[node name="EmptyCell43" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
-layout_mode = 2
-
-[node name="EmptyCell44" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
-layout_mode = 2
-
-[node name="EmptyCell45" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
-layout_mode = 2
-
-[node name="EmptyCell46" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
-layout_mode = 2
-
-[node name="EmptyCell47" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
-layout_mode = 2
-
-[node name="EmptyCell48" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
-layout_mode = 2
-
-[node name="EmptyCell49" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
-layout_mode = 2
-
-[node name="EmptyCell50" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
-layout_mode = 2
-
-[node name="EmptyCell51" parent="PanelContainer/GridContainer" instance=ExtResource("1_uknyb")]
 layout_mode = 2
 
 [connection signal="pressed" from="PanelContainer/GridContainer/BombCell" to="." method="_on_bomb_cell_pressed"]
