@@ -5,7 +5,4 @@
 
 [node name="Game" type="CanvasLayer"]
 script = ExtResource("1_b7r1f")
-
-[node name="Board" parent="." instance=ExtResource("1_dcj2p")]
-
-[connection signal="bomb_pressed" from="Board" to="." method="_on_board_bomb_pressed"]
+board_scene = ExtResource("1_dcj2p")
