@@ -2,6 +2,7 @@ class_name Board
 extends CanvasLayer
 
 signal bomb_pressed
+signal empty_cell_pressed
 
 @export var bomb_cell_scene: PackedScene
 @export var empty_cell_scene: PackedScene
@@ -101,7 +102,9 @@ func _on_bomb_cell_pressed() -> void:
 	bomb_pressed.emit()
 
 func _on_empty_cell_pressed(x: int, y: int, value: int) -> void:
+	empty_cell_pressed.emit()
+
 	if value != 0:
 		return
-	
+
 	_propagate_press(x, y)
