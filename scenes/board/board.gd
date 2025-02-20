@@ -11,6 +11,8 @@ var _grid: Array
 const _DIRECTIONS = [-1, 0, 1]
 
 func generate(rows: int, columns: int, bombs: int) -> void:
+	assert(rows * columns >= bombs, "Attempted to generate a board with more bombs than available cells.")
+	
 	_generate_random_grid(rows, columns, bombs)
 
 	var grid_container = GridContainer.new()
