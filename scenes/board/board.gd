@@ -51,6 +51,18 @@ func _generate_random_grid(rows: int, columns: int, bombs: int) -> void:
 			_grid[row].append(flat_grid[index])
 			
 			index += 1
+	
+	for row in rows:
+		for column in columns:
+			var cell: Cell = _grid[row][column]
+
+			if cell is EmptyCell:
+				for i in _DIRECTIONS:
+					for j in _DIRECTIONS:
+						if _is_outside_grid(row + i, column + j) or (i == 0 and j == 0):
+							continue
+						
+						(cell as EmptyCell).surrounding_cells.append((_grid[row + i][column + j] as Cell))
 
 func _setup_bomb_cell() -> BombCell:
 	var bomb_cell = bomb_cell_scene.instantiate()

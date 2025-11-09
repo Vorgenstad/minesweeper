@@ -1,7 +1,10 @@
-class_name Cell
+@abstract class_name Cell
 extends PanelContainer
 
 var flagged := false
+var is_pressed := false
+
+@abstract func press()
 
 func _on_button_pressed_right() -> void:
 	flagged = !flagged
