@@ -20,10 +20,13 @@ func _ready() -> void:
 	add_child(board)
 
 func _on_board_bomb_pressed() -> void:
-	print("Game over!")
+	get_tree().paused = true
+
+	print("Game Over!")
 
 func _on_board_empty_cell_pressed() -> void:
 	empty_cells -= 1
 
 	if empty_cells == 0:
+		get_tree().paused = true
 		print("You win!")
