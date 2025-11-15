@@ -7,17 +7,17 @@ extends CanvasLayer
 @export var columns: int = 10
 @export var bombs: int = 20
 
-var empty_cells = rows * columns - bombs
+var _board: Board
+var _empty_cells = rows * columns - bombs
 
 func _ready() -> void:
-	var board = board_scene.instantiate()
+	_board = board_scene.instantiate()
+	_board.connect("bomb_pressed", _on_board_bomb_pressed)
+	_board.connect("empty_cell_pressed", _on_board_empty_cell_pressed)
 
-	board.connect("bomb_pressed", _on_board_bomb_pressed)
-	board.connect("empty_cell_pressed", _on_board_empty_cell_pressed)
+	_board.initialize(rows, columns, bombs)
 
-	board.generate(rows, columns, bombs)
-
-	add_child(board)
+	%Container.add_child(_board)
 
 func _on_board_bomb_pressed() -> void:
 	get_tree().paused = true
@@ -25,8 +25,11 @@ func _on_board_bomb_pressed() -> void:
 	print("Game Over!")
 
 func _on_board_empty_cell_pressed() -> void:
-	empty_cells -= 1
+	_empty_cells -= 1
 
-	if empty_cells == 0:
+	if _empty_cells == 0:
 		get_tree().paused = true
 		print("You win!")
+
+func _on_top_bar_restart_actioned() -> void:
+	_board.reset()

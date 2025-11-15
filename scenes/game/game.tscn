@@ -1,8 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://b533tyow0ytax"]
+[gd_scene load_steps=4 format=3 uid="uid://b533tyow0ytax"]
 
-[ext_resource type="Script" path="res://scenes/game/game.gd" id="1_b7r1f"]
+[ext_resource type="Script" uid="uid://ctgenu6ow5nbh" path="res://scenes/game/game.gd" id="1_b7r1f"]
 [ext_resource type="PackedScene" uid="uid://bw8cfxu2r8q3y" path="res://scenes/board/board.tscn" id="1_dcj2p"]
+[ext_resource type="PackedScene" uid="uid://4qk7gijraocq" path="res://scenes/top_bar/top_bar.tscn" id="3_0sr1o"]
 
 [node name="Game" type="CanvasLayer"]
 script = ExtResource("1_b7r1f")
 board_scene = ExtResource("1_dcj2p")
+
+[node name="Container" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TopBar" parent="Container" instance=ExtResource("3_0sr1o")]
+
+[connection signal="restart_actioned" from="Container/TopBar" to="." method="_on_top_bar_restart_actioned"]
