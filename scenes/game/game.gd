@@ -7,8 +7,10 @@ extends CanvasLayer
 @export var columns: int = 10
 @export var bombs: int = 20
 
+
 var _board: Board
 var _empty_cells = rows * columns - bombs
+var _started := false
 
 func _ready() -> void:
 	_board = board_scene.instantiate()
@@ -25,6 +27,10 @@ func _on_board_bomb_pressed() -> void:
 	print("Game Over!")
 
 func _on_board_empty_cell_pressed() -> void:
+	if not _started:
+		_started = true
+		%TopBar.start_timer()
+
 	_empty_cells -= 1
 
 	if _empty_cells == 0:
