@@ -11,7 +11,7 @@ func _ready() -> void:
 	%InnerButton.text = str(value) if value != 0 else ""
 
 func press() -> void:
-	if is_pressed or flagged:
+	if is_pressed:
 		return
 
 	is_pressed = true
