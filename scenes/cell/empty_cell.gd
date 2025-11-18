@@ -1,7 +1,7 @@
 class_name EmptyCell
 extends Cell
 
-signal pressed(x: int, y: int, value: int)
+signal pressed(flagged: bool)
 
 @export var value := 0
 
@@ -18,13 +18,14 @@ func press() -> void:
 
 	%Button.visible = false
 
-	pressed.emit()
+	pressed.emit(flagged)
 
 func _on_button_pressed_left() -> void:
 	press()
 
 func _on_inner_button_pressed_left() -> void:
-	var flagged_surrounding_cells: int = surrounding_cells.reduce(func(accum, cell): return accum + (1 if cell.flagged else 0), 0)
+	var flagged_surrounding_cells: int = \
+		surrounding_cells.reduce(func(accum, cell): return accum + (1 if cell.flagged and !cell.is_pressed else 0), 0)
 
 	if flagged_surrounding_cells == value:
 		var unflagged_surrounding_cells := surrounding_cells.filter(func(cell): return !cell.flagged)

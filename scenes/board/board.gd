@@ -2,7 +2,8 @@ class_name Board
 extends CanvasLayer
 
 signal bomb_pressed
-signal empty_cell_pressed
+signal empty_cell_pressed(flagged: bool)
+signal flag_toggled(flagged: bool)
 
 @export var bomb_cell_scene: PackedScene
 @export var empty_cell_scene: PackedScene
@@ -47,6 +48,8 @@ func _generate_random_grid() -> void:
 	for row in _grid.size():
 		for column in _grid[0].size():
 			var cell: Cell = _grid[row][column]
+
+			cell.connect("flag_toggled", _on_cell_flag_toggled)
 
 			if cell is EmptyCell:
 				_setup_empty_cell(cell, row, column)
@@ -130,11 +133,14 @@ func _propagate_press(x: int, y: int) -> void:
 func _is_outside_grid(x: int, y: int) -> bool:
 	return x < 0 or x >= _grid.size() or y < 0 or y >= _grid[0].size()
 
+func _on_cell_flag_toggled(flagged: bool) -> void:
+	flag_toggled.emit(flagged)
+	
 func _on_bomb_cell_pressed() -> void:
 	bomb_pressed.emit()
 
-func _on_empty_cell_pressed(x: int, y: int, value: int) -> void:
-	empty_cell_pressed.emit()
+func _on_empty_cell_pressed(flagged, x: int, y: int, value: int) -> void:
+	empty_cell_pressed.emit(flagged)
 
 	if value != 0:
 		return

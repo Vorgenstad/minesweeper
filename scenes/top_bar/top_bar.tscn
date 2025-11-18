@@ -13,12 +13,17 @@ size_flags_vertical = 0
 alignment = 1
 script = ExtResource("1_3ftgv")
 
-[node name="Time" parent="." instance=ExtResource("2_e8je8")]
+[node name="MinesLeft" parent="." instance=ExtResource("2_e8je8")]
 unique_name_in_owner = true
 layout_mode = 2
+text = "00"
 
 [node name="RestartButton" type="Button" parent="."]
 layout_mode = 2
 text = "Restart"
+
+[node name="Time" parent="." instance=ExtResource("2_e8je8")]
+unique_name_in_owner = true
+layout_mode = 2
 
 [connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
