@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://1qmqu7smibo8" path="res://scenes/board/board.gd" id="1_jyebd"]
 [ext_resource type="PackedScene" uid="uid://b8oqe8uikpldw" path="res://scenes/cell/empty_cell.tscn" id="1_uknyb"]
-[ext_resource type="PackedScene" uid="uid://pya3w8g4v7cw" path="res://scenes/cell/bomb_cell.tscn" id="2_e2put"]
+[ext_resource type="PackedScene" path="res://scenes/cell/mine_cell.tscn" id="2_knosr"]
 
 [node name="Board" type="CanvasLayer"]
 script = ExtResource("1_jyebd")
-bomb_cell_scene = ExtResource("2_e2put")
+mine_cell_scene = ExtResource("2_knosr")
 empty_cell_scene = ExtResource("1_uknyb")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]

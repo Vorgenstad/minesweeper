@@ -1,4 +1,4 @@
-class_name BombCell
+class_name MineCell
 extends Cell
 
 signal pressed

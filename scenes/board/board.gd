@@ -1,11 +1,11 @@
 class_name Board
 extends CanvasLayer
 
-signal bomb_pressed
+signal mine_pressed
 signal empty_cell_pressed(flagged: bool)
 signal flag_toggled(flagged: bool)
 
-@export var bomb_cell_scene: PackedScene
+@export var mine_cell_scene: PackedScene
 @export var empty_cell_scene: PackedScene
 
 var _grid_container: GridContainer
@@ -14,17 +14,16 @@ var _grid: Array
 
 var _rows: int
 var _columns: int
-var _bombs: int
+var _mines: int
 
 const _DIRECTIONS = [-1, 0, 1]
 
-func initialize(rows: int, columns: int, bombs: int) -> void:
-	assert(rows * columns >= bombs, "Attempted to initialize a board with more bombs than available cells.")
+func initialize(rows: int, columns: int, mines: int) -> void:
+	assert(rows * columns >= mines, "Attempted to initialize a board with more mines than available cells.")
 	
 	_rows = rows
 	_columns = columns
-	_bombs = bombs
-
+	_mines = mines
 	_grid_container = GridContainer.new()
 	_grid_container.columns = _columns
 
@@ -58,16 +57,16 @@ func _generate_random_grid() -> void:
 
 func _randomize_grid() -> void:
 	var flat_grid = []
-	var _bombs_to_place = _bombs
+	var _mines_to_place = _mines
 
 	for row in _rows:
 		for column in _columns:
-			if (_bombs_to_place > 0):
-				var bomb_cell = _setup_bomb_cell()
+			if (_mines_to_place > 0):
+				var mine_cell = _setup_mine_cell()
 
-				flat_grid.append(bomb_cell)
+				flat_grid.append(mine_cell)
 
-				_bombs_to_place -= 1
+				_mines_to_place -= 1
 			else:
 				var empty_cell = empty_cell_scene.instantiate()
 
@@ -97,12 +96,12 @@ func _randomize_grid() -> void:
 						
 						(cell as EmptyCell).surrounding_cells.append((_grid[row + i][column + j] as Cell))
 
-func _setup_bomb_cell() -> BombCell:
-	var bomb_cell = bomb_cell_scene.instantiate()
+func _setup_mine_cell() -> MineCell:
+	var mine_cell = mine_cell_scene.instantiate()
 
-	bomb_cell.connect("pressed", _on_bomb_cell_pressed)
+	mine_cell.connect("pressed", _on_mine_cell_pressed)
 
-	return bomb_cell
+	return mine_cell
 
 func _setup_empty_cell(empty_cell: EmptyCell, row: int, column: int) -> void:
 	var value := 0
@@ -112,7 +111,7 @@ func _setup_empty_cell(empty_cell: EmptyCell, row: int, column: int) -> void:
 			if _is_outside_grid(row + i, column + j):
 				continue
 
-			if _grid[row + i][column + j] is BombCell:
+			if _grid[row + i][column + j] is MineCell:
 				value += 1
 	
 	empty_cell.value = value
@@ -136,8 +135,8 @@ func _is_outside_grid(x: int, y: int) -> bool:
 func _on_cell_flag_toggled(flagged: bool) -> void:
 	flag_toggled.emit(flagged)
 	
-func _on_bomb_cell_pressed() -> void:
-	bomb_pressed.emit()
+func _on_mine_cell_pressed() -> void:
+	mine_pressed.emit()
 
 func _on_empty_cell_pressed(flagged, x: int, y: int, value: int) -> void:
 	empty_cell_pressed.emit(flagged)

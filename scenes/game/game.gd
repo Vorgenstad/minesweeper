@@ -13,7 +13,7 @@ var _started := false
 
 func _ready() -> void:
 	_board = board_scene.instantiate()
-	_board.connect("bomb_pressed", _on_board_bomb_pressed)
+	_board.connect("mine_pressed", _on_board_mine_pressed)
 	_board.connect("empty_cell_pressed", _on_board_empty_cell_pressed)
 	_board.connect("flag_toggled", _on_board_flag_toggled)
 
@@ -28,7 +28,7 @@ func _start() -> void:
 		_started = true
 		%TopBar.start_timer()
 
-func _on_board_bomb_pressed() -> void:
+func _on_board_mine_pressed() -> void:
 	get_tree().paused = true
 
 	print("Game Over!")
