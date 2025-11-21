@@ -30,8 +30,7 @@ func _start() -> void:
 
 func _on_board_mine_pressed() -> void:
 	get_tree().paused = true
-
-	print("Game Over!")
+	_board.display_loss()
 
 func _on_board_empty_cell_pressed(flagged: bool) -> void:
 	_start()
@@ -44,7 +43,7 @@ func _on_board_empty_cell_pressed(flagged: bool) -> void:
 
 	if _empty_cells == 0:
 		get_tree().paused = true
-		print("You win!")
+		_board.display_win()
 
 func _on_top_bar_restart_actioned() -> void:
 	_board.reset()

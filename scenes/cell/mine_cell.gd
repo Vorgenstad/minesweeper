@@ -11,5 +11,9 @@ func press() -> void:
 
 	pressed.emit()
 
+func reveal() -> void:
+	assert(!flagged and !is_pressed, "Cannot reveal a flagged or pressed mine.")
+	%Button.text = "X"
+
 func _on_button_pressed_left() -> void:
 	press()

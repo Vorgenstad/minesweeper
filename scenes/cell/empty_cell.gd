@@ -20,6 +20,12 @@ func press() -> void:
 
 	pressed.emit(flagged)
 
+func reveal_incorrect_flag() -> void:
+	assert(flagged, "Cannot reveal incorrect flag on unflagged cell.")
+
+	if flagged and !is_pressed:
+		%Button.text = "❌"
+
 func _on_button_pressed_left() -> void:
 	press()
 

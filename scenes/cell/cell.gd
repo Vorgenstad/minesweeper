@@ -8,14 +8,15 @@ var is_pressed := false
 
 @abstract func press()
 
-func _on_button_pressed_right() -> void:
+func toggle_flag() -> void:
 	flagged = !flagged
-
+	_update_display()
 	flag_toggled.emit(flagged)
 
-	_update_state()
+func _on_button_pressed_right() -> void:
+	toggle_flag()
 
-func _update_state() -> void:
+func _update_display() -> void:
 	if flagged:
 		%Button.text = "🚩"
 		%Button.disabled = true

@@ -41,6 +41,25 @@ func reset() -> void:
 
 	_generate_random_grid()
 
+func display_win() -> void:
+	for row in _grid.size():
+		for column in _grid[0].size():
+			var cell: Cell = _grid[row][column]
+
+			if cell is MineCell and not cell.flagged:
+				cell.toggle_flag()
+
+func display_loss() -> void:
+	for row in _grid.size():
+		for column in _grid[0].size():
+			var cell: Cell = _grid[row][column]
+
+			if cell is EmptyCell and cell.flagged:
+				(cell as EmptyCell).reveal_incorrect_flag()
+
+			if cell is MineCell and not cell.is_pressed and not cell.flagged:
+				(cell as MineCell).reveal()
+
 func _generate_random_grid() -> void:
 	_randomize_grid()
 
