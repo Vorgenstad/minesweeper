@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://328e8gtu83r8"]
+
+[ext_resource type="Script" uid="uid://bw3k063hb5sms" path="res://scenes/menu/menu.gd" id="1_klgdb"]
+[ext_resource type="PackedScene" uid="uid://b533tyow0ytax" path="res://scenes/game/game.tscn" id="2_mcvr8"]
+
+[node name="Menu" type="CanvasLayer"]
+script = ExtResource("1_klgdb")
+game_scene = ExtResource("2_mcvr8")
+
+[node name="Container" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="Container"]
+layout_mode = 2
+text = "Minesweeper"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="Container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Play"
+
+[connection signal="pressed" from="Container/StartButton" to="." method="_on_start_button_pressed"]
