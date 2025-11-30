@@ -19,7 +19,7 @@ func _ready() -> void:
 
 	_board.initialize(rows, columns, mines)
 
-	%Container.add_child(_board)
+	%BoardContainer.add_child(_board)
 
 	%TopBar.set_mines_left(mines)
 

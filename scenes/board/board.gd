@@ -1,5 +1,5 @@
 class_name Board
-extends CanvasLayer
+extends PanelContainer
 
 signal mine_pressed
 signal empty_cell_pressed(flagged: bool)
@@ -29,7 +29,7 @@ func initialize(rows: int, columns: int, mines: int) -> void:
 
 	_generate_random_grid()
 
-	%PanelContainer.add_child(_grid_container)
+	add_child(_grid_container)
 
 func reset() -> void:
 	_grid = []
