@@ -11,6 +11,8 @@ var _board: Board
 var _empty_cells = rows * columns - mines
 var _started := false
 
+var _mine_count = mines
+
 func _ready() -> void:
 	_board = board_scene.instantiate()
 	_board.connect("mine_pressed", _on_board_mine_pressed)
@@ -38,22 +40,27 @@ func _on_board_empty_cell_pressed(flagged: bool) -> void:
 	_empty_cells -= 1
 
 	if flagged:
-		mines += 1
-		%TopBar.set_mines_left(mines)
+		_mine_count += 1
+		%TopBar.set_mines_left(_mine_count)
 
 	if _empty_cells == 0:
 		get_tree().paused = true
 		_board.display_win()
 
 func _on_top_bar_restart_actioned() -> void:
+	get_tree().paused = false
 	_board.reset()
+	_started = false
+	%TopBar.set_mines_left(mines)
+	_mine_count = mines
+	_empty_cells = rows * columns - mines
 
 func _on_board_flag_toggled(flagged: bool) -> void:
 	_start()
 
 	if flagged:
-		mines -= 1
+		_mine_count -= 1
 	else:
-		mines += 1
+		_mine_count += 1
 
-	%TopBar.set_mines_left(mines)
+	%TopBar.set_mines_left(_mine_count)

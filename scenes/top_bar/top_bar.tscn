@@ -1,28 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://4qk7gijraocq"]
+[gd_scene format=3 uid="uid://4qk7gijraocq"]
 
 [ext_resource type="Script" uid="uid://ghrdr2ek5idv" path="res://scenes/top_bar/top_bar.gd" id="1_3ftgv"]
 [ext_resource type="PackedScene" uid="uid://cq7temj0db75a" path="res://scenes/top_bar/time.tscn" id="2_e8je8"]
 
-[node name="TopBar" type="HBoxContainer"]
-layout_direction = 2
+[node name="TopBar" type="HBoxContainer" unique_id=1852891426]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
 size_flags_vertical = 0
+layout_direction = 2
 alignment = 1
 script = ExtResource("1_3ftgv")
 
-[node name="MinesLeft" parent="." instance=ExtResource("2_e8je8")]
+[node name="MinesLeft" parent="." unique_id=1493845018 instance=ExtResource("2_e8je8")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "00"
 
-[node name="RestartButton" type="Button" parent="."]
+[node name="RestartButton" type="Button" parent="." unique_id=391890336]
+process_mode = 3
 layout_mode = 2
 text = "Restart"
 
-[node name="Time" parent="." instance=ExtResource("2_e8je8")]
+[node name="Time" parent="." unique_id=1317286547 instance=ExtResource("2_e8je8")]
 unique_name_in_owner = true
 layout_mode = 2
 
