@@ -1,13 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://328e8gtu83r8"]
+[gd_scene format=3 uid="uid://328e8gtu83r8"]
 
 [ext_resource type="Script" uid="uid://bw3k063hb5sms" path="res://scenes/menu/menu.gd" id="1_klgdb"]
 [ext_resource type="PackedScene" uid="uid://b533tyow0ytax" path="res://scenes/game/game.tscn" id="2_mcvr8"]
 
-[node name="Menu" type="CanvasLayer"]
+[node name="Menu" type="CanvasLayer" unique_id=446605254]
 script = ExtResource("1_klgdb")
 game_scene = ExtResource("2_mcvr8")
 
-[node name="Container" type="VBoxContainer" parent="."]
+[node name="Container" type="VBoxContainer" parent="." unique_id=864139032]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -15,16 +15,27 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Title" type="Label" parent="Container"]
+[node name="Title" type="Label" parent="Container" unique_id=695440576]
 layout_mode = 2
 text = "Minesweeper"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StartButton" type="Button" parent="Container"]
-unique_name_in_owner = true
+[node name="BeginnerButton" type="Button" parent="Container" unique_id=2085950822]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Play"
+text = "Beginner"
 
-[connection signal="pressed" from="Container/StartButton" to="." method="_on_start_button_pressed"]
+[node name="IntermediateButton" type="Button" parent="Container" unique_id=1821470719]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Intermediate"
+
+[node name="ExpertButton" type="Button" parent="Container" unique_id=1866516512]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Expert"
+
+[connection signal="pressed" from="Container/BeginnerButton" to="." method="_on_beginner_button_pressed"]
+[connection signal="pressed" from="Container/IntermediateButton" to="." method="_on_intermediate_button_pressed"]
+[connection signal="pressed" from="Container/ExpertButton" to="." method="_on_expert_button_pressed"]

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bp78yuajegdkd"]
+
+[ext_resource type="PackedScene" uid="uid://328e8gtu83r8" path="res://scenes/menu/menu.tscn" id="1_hyk8p"]
+[ext_resource type="Script" uid="uid://cm1igudpb1pop" path="res://scenes/main/main.gd" id="1_iuonh"]
+[ext_resource type="PackedScene" uid="uid://b533tyow0ytax" path="res://scenes/game/game.tscn" id="3_k2fmo"]
+
+[node name="Main" type="Node" unique_id=688136081 node_paths=PackedStringArray("_game")]
+script = ExtResource("1_iuonh")
+_game = NodePath("Game")
+
+[node name="Menu" parent="." unique_id=446605254 instance=ExtResource("1_hyk8p")]
+unique_name_in_owner = true
+
+[node name="Game" parent="." unique_id=1261818456 instance=ExtResource("3_k2fmo")]
+unique_name_in_owner = true
+visible = false
+
+[connection signal="game_start_actioned" from="Menu" to="." method="_on_menu_game_start_actioned"]

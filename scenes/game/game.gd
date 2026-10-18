@@ -3,17 +3,24 @@ extends CanvasLayer
 
 @export var board_scene: PackedScene
 
-@export var rows: int = 10
-@export var columns: int = 10
-@export var mines: int = 10
+var _rows: int
+var _columns: int
+var _mines: int
+
+var _mine_count: int
+var _empty_cells: int
 
 var _board: Board
-var _empty_cells = rows * columns - mines
 var _started := false
 
-var _mine_count = mines
 
-func _ready() -> void:
+func initialize(rows: int, columns: int, mines: int) -> void:
+	_rows = rows
+	_columns = columns
+	_mines = mines
+	_empty_cells = rows * columns - mines
+	_mine_count = mines
+
 	_board = board_scene.instantiate()
 	_board.connect("mine_pressed", _on_board_mine_pressed)
 	_board.connect("empty_cell_pressed", _on_board_empty_cell_pressed)
@@ -51,9 +58,9 @@ func _on_top_bar_restart_actioned() -> void:
 	get_tree().paused = false
 	_board.reset()
 	_started = false
-	%TopBar.set_mines_left(mines)
-	_mine_count = mines
-	_empty_cells = rows * columns - mines
+	%TopBar.set_mines_left(_mines)
+	_mine_count = _mines
+	_empty_cells = _rows * _columns - _mines
 
 func _on_board_flag_toggled(flagged: bool) -> void:
 	_start()
