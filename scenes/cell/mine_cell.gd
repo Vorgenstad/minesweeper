@@ -7,6 +7,8 @@ func press() -> void:
 	if is_pressed or flagged:
 		return
 
+	is_pressed = true
+
 	%Button.visible = false
 
 	pressed.emit()
@@ -14,6 +16,3 @@ func press() -> void:
 func reveal() -> void:
 	assert(!flagged and !is_pressed, "Cannot reveal a flagged or pressed mine.")
 	%Button.text = "X"
-
-func _on_button_pressed_left() -> void:
-	press()

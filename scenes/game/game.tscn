@@ -1,14 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://b533tyow0ytax"]
+[gd_scene format=3 uid="uid://b533tyow0ytax"]
 
 [ext_resource type="Script" uid="uid://ctgenu6ow5nbh" path="res://scenes/game/game.gd" id="1_b7r1f"]
 [ext_resource type="PackedScene" uid="uid://bw8cfxu2r8q3y" path="res://scenes/board/board.tscn" id="1_dcj2p"]
 [ext_resource type="PackedScene" uid="uid://4qk7gijraocq" path="res://scenes/top_bar/top_bar.tscn" id="3_0sr1o"]
 
-[node name="Game" type="CanvasLayer"]
+[node name="Game" type="CanvasLayer" unique_id=1664333641]
 script = ExtResource("1_b7r1f")
 board_scene = ExtResource("1_dcj2p")
 
-[node name="Container" type="VBoxContainer" parent="."]
+[node name="Container" type="VBoxContainer" parent="." unique_id=718730611]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -16,11 +16,11 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="TopBar" parent="Container" instance=ExtResource("3_0sr1o")]
+[node name="TopBar" parent="Container" unique_id=2002235728 instance=ExtResource("3_0sr1o")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="BoardContainer" type="Control" parent="Container"]
+[node name="BoardContainer" type="Control" parent="Container" unique_id=168757908]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3

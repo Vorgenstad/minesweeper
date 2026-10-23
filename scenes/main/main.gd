@@ -1,7 +1,7 @@
 extends Node
 
-func _on_menu_game_start_actioned(rows: int, columns: int, mines: int) -> void:
+func _on_menu_game_start_actioned(settings: GameSettings) -> void:
 	%Menu.visible = false
 
-	%Game.initialize(rows, columns, mines)
+	%Game.initialize(settings)
 	%Game.visible = true

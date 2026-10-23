@@ -9,5 +9,5 @@ func set_mines_left(mines_left: int) -> void:
 	%MinesLeft.text = (str(mines_left).pad_zeros(2))
 
 func _on_restart_button_pressed() -> void:
-	%Time.initialize()
+	%Time.clear()
 	restart_actioned.emit()

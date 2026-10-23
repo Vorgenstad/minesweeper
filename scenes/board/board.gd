@@ -5,29 +5,43 @@ signal mine_pressed
 signal empty_cell_pressed(flagged: bool)
 signal flag_toggled(flagged: bool)
 
+const _DIRECTIONS = [-1, 0, 1]
+
 @export var mine_cell_scene: PackedScene
 @export var empty_cell_scene: PackedScene
 
 var _grid_container: GridContainer
 
-var _grid: Array
-var _initial_rows: int
-var _initial_columns: int
-var _initial_mines: int
+var _grid: Array[Array]
 
-const _DIRECTIONS = [-1, 0, 1]
+var _settings: GameSettings
 
-func initialize(rows: int, columns: int, mines: int) -> void:
+func initialize(settings: GameSettings) -> void:
 	_grid_container = GridContainer.new()
-	_grid_container.columns = columns
+	_grid_container.columns = settings.columns
 
-	_initial_rows = rows
-	_initial_columns = columns
-	_initial_mines = mines
+	_settings = settings
 
-	setup(rows, columns, mines)
+	setup()
 
 	add_child(_grid_container)
+
+func setup() -> void:
+	assert(_settings.rows * _settings.columns >= _settings.mines,
+		"Attempted to initialize a board with more mines than available cells.")
+
+	_randomize_grid()
+
+	for row in _grid.size():
+		for column in _grid[0].size():
+			var cell: Cell = _grid[row][column]
+
+			cell.connect("flag_toggled", _on_cell_flag_toggled)
+
+			if cell is EmptyCell:
+				_setup_empty_cell(cell, row, column)
+
+			_grid_container.add_child(cell)
 
 func reset() -> void:
 	_grid = []
@@ -37,7 +51,7 @@ func reset() -> void:
 		_grid_container.remove_child(c)
 		c.queue_free()
 
-	setup(_initial_rows, _initial_columns, _initial_mines)
+	setup()
 
 func display_win() -> void:
 	print("You win")
@@ -60,30 +74,25 @@ func display_loss() -> void:
 			if cell is MineCell and not cell.is_pressed and not cell.flagged:
 				(cell as MineCell).reveal()
 
-func setup(rows: int, columns: int, mines: int) -> void:
-	assert(rows * columns >= mines, "Attempted to initialize a board with more mines than available cells.")
-	_generate_random_grid(rows, columns, mines)
+func _randomize_grid() -> void:
+	var flat_grid = _generate_random_flat_grid()
 
-func _generate_random_grid(rows: int, columns: int, mines: int) -> void:
-	_randomize_grid(rows, columns, mines)
+	var flat_grid_index = 0
 
-	for row in _grid.size():
-		for column in _grid[0].size():
-			var cell: Cell = _grid[row][column]
+	for row in _settings.rows:
+		_grid.append([])
 
-			cell.connect("flag_toggled", _on_cell_flag_toggled)
+		for column in _settings.columns:
+			_grid[row].append(flat_grid[flat_grid_index])
+			
+			flat_grid_index += 1
+	
+func _generate_random_flat_grid() -> Array[Cell]:
+	var flat_grid: Array[Cell] = []
+	var _mines_to_place = _settings.mines
 
-			if cell is EmptyCell:
-				_setup_empty_cell(cell, row, column)
-
-			_grid_container.add_child(cell)
-
-func _randomize_grid(rows: int, columns: int, mines: int) -> void:
-	var flat_grid = []
-	var _mines_to_place = mines
-
-	for row in rows:
-		for column in columns:
+	for row in _settings.rows:
+		for column in _settings.columns:
 			if (_mines_to_place > 0):
 				var mine_cell = _setup_mine_cell()
 
@@ -97,27 +106,7 @@ func _randomize_grid(rows: int, columns: int, mines: int) -> void:
 
 	flat_grid.shuffle()
 
-	var index = 0
-
-	for row in rows:
-		_grid.append([])
-
-		for column in columns:
-			_grid[row].append(flat_grid[index])
-			
-			index += 1
-	
-	for row in rows:
-		for column in columns:
-			var cell: Cell = _grid[row][column]
-
-			if cell is EmptyCell:
-				for i in _DIRECTIONS:
-					for j in _DIRECTIONS:
-						if _is_outside_grid(row + i, column + j) or (i == 0 and j == 0):
-							continue
-						
-						(cell as EmptyCell).surrounding_cells.append((_grid[row + i][column + j] as Cell))
+	return flat_grid
 
 func _setup_mine_cell() -> MineCell:
 	var mine_cell = mine_cell_scene.instantiate()
@@ -134,8 +123,13 @@ func _setup_empty_cell(empty_cell: EmptyCell, row: int, column: int) -> void:
 			if _is_outside_grid(row + i, column + j):
 				continue
 
-			if _grid[row + i][column + j] is MineCell:
-				value += 1
+			if (i != 0 or j != 0):
+				var surrounding_cell: Cell = _grid[row + i][column + j]
+
+				empty_cell.surrounding_cells.append(surrounding_cell)
+
+				if surrounding_cell is MineCell:
+					value += 1
 	
 	empty_cell.value = value
 

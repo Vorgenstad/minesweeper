@@ -1,13 +1,12 @@
 extends Label
 
-var time := 0
+var time := 0:
+	set(value):
+		time = value
+		text = str(time).pad_zeros(3)
 
-func _ready() -> void:
-	initialize()
-
-func initialize() -> void:
+func clear() -> void:
 	time = 0
-	text = str(time).pad_zeros(3)
 	%Timer.stop()
 	
 func start() -> void:
@@ -15,4 +14,3 @@ func start() -> void:
 
 func _on_timer_timeout() -> void:
 	time += 1
-	text = str(time).pad_zeros(3)

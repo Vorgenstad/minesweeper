@@ -5,7 +5,7 @@ signal pressed(flagged: bool)
 
 @export var value := 0
 
-var surrounding_cells := []
+var surrounding_cells: Array[Cell] = []
 
 func _ready() -> void:
 	%InnerButton.text = str(value) if value != 0 else ""
@@ -26,12 +26,11 @@ func reveal_incorrect_flag() -> void:
 	if flagged and !is_pressed:
 		%Button.text = "❌"
 
-func _on_button_pressed_left() -> void:
-	press()
-
 func _on_inner_button_pressed_left() -> void:
-	var flagged_surrounding_cells: int = \
-		surrounding_cells.reduce(func(accum, cell): return accum + (1 if cell.flagged and !cell.is_pressed else 0), 0)
+	var flagged_surrounding_cells: int = surrounding_cells.reduce(
+		func(accum, cell):
+			return accum + (1 if cell.flagged and !cell.is_pressed else 0), 0
+	)
 
 	if flagged_surrounding_cells == value:
 		var unflagged_surrounding_cells := surrounding_cells.filter(func(cell): return !cell.flagged)
