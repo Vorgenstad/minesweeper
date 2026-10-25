@@ -71,7 +71,7 @@ func display_loss() -> void:
 			if cell is EmptyCell and cell.flagged:
 				(cell as EmptyCell).reveal_incorrect_flag()
 
-			if cell is MineCell and not cell.is_pressed and not cell.flagged:
+			if cell is MineCell and not cell.is_revealed and not cell.flagged:
 				(cell as MineCell).reveal()
 
 func _randomize_grid() -> void:
@@ -143,8 +143,16 @@ func _propagate_press(x: int, y: int) -> void:
 			
 			var cell: Cell = _grid[x + i][y + j]
 
-			if cell is EmptyCell and !cell.is_pressed:
-				cell.press()
+			## Calling cell.press() would add three function calls to the stack 
+			## for each cell, causing a stack overflow. We avoid it by just revealing
+			## the cell (which doesn't emit any signal), and continuing the propagation here
+			if cell is EmptyCell and !cell.is_revealed:
+				cell.reveal()
+
+				empty_cell_pressed.emit(cell.flagged)
+
+				if cell.value == 0:
+					_propagate_press(x + i, y + j)
 
 func _is_outside_grid(x: int, y: int) -> bool:
 	return x < 0 or x >= _grid.size() or y < 0 or y >= _grid[0].size()

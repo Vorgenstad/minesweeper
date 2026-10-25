@@ -14,7 +14,7 @@ var flagged := false:
 			%Button.text = ""
 			%Button.disabled = false
 
-var is_pressed := false
+var is_revealed := false
 
 @abstract func press()
 
