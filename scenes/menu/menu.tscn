@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://328e8gtu83r8"]
 
 [ext_resource type="Script" uid="uid://bw3k063hb5sms" path="res://scenes/menu/menu.gd" id="1_klgdb"]
-[ext_resource type="PackedScene" uid="uid://b533tyow0ytax" path="res://scenes/game/game.tscn" id="2_mcvr8"]
 
 [node name="Menu" type="CanvasLayer" unique_id=446605254]
 script = ExtResource("1_klgdb")
-game_scene = ExtResource("2_mcvr8")
 
-[node name="Container" type="VBoxContainer" parent="." unique_id=864139032]
+[node name="DifficultyContainer" type="VBoxContainer" parent="." unique_id=864139032]
+unique_name_in_owner = true
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -15,27 +15,101 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Title" type="Label" parent="Container" unique_id=695440576]
+[node name="Title" type="Label" parent="DifficultyContainer" unique_id=695440576]
 layout_mode = 2
 text = "Minesweeper"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BeginnerButton" type="Button" parent="Container" unique_id=2085950822]
+[node name="BeginnerButton" type="Button" parent="DifficultyContainer" unique_id=2085950822]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Beginner"
 
-[node name="IntermediateButton" type="Button" parent="Container" unique_id=1821470719]
+[node name="IntermediateButton" type="Button" parent="DifficultyContainer" unique_id=1821470719]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Intermediate"
 
-[node name="ExpertButton" type="Button" parent="Container" unique_id=1866516512]
+[node name="ExpertButton" type="Button" parent="DifficultyContainer" unique_id=1866516512]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Expert"
 
-[connection signal="pressed" from="Container/BeginnerButton" to="." method="_on_beginner_button_pressed"]
-[connection signal="pressed" from="Container/IntermediateButton" to="." method="_on_intermediate_button_pressed"]
-[connection signal="pressed" from="Container/ExpertButton" to="." method="_on_expert_button_pressed"]
+[node name="CustomButton" type="Button" parent="DifficultyContainer" unique_id=1692960896]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Custom"
+
+[node name="CustomGameContainer" type="VBoxContainer" parent="." unique_id=743733970]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ErrorLabel" type="Label" parent="CustomGameContainer" unique_id=229244903]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+horizontal_alignment = 1
+
+[node name="InputsContainer" type="HBoxContainer" parent="CustomGameContainer" unique_id=928924945]
+layout_mode = 2
+alignment = 1
+
+[node name="WidthLabel" type="Label" parent="CustomGameContainer/InputsContainer" unique_id=1609005750]
+layout_mode = 2
+text = "Width:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WidthInput" type="LineEdit" parent="CustomGameContainer/InputsContainer" unique_id=986979892]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+max_length = 3
+
+[node name="HeightLabel" type="Label" parent="CustomGameContainer/InputsContainer" unique_id=1207510774]
+layout_mode = 2
+text = "Height:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HeightInput" type="LineEdit" parent="CustomGameContainer/InputsContainer" unique_id=347394367]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+max_length = 3
+
+[node name="MinesLabel" type="Label" parent="CustomGameContainer/InputsContainer" unique_id=1292643117]
+layout_mode = 2
+text = "Mines:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MinesInput" type="LineEdit" parent="CustomGameContainer/InputsContainer" unique_id=1783291936]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+max_length = 4
+
+[node name="PlayCustomButton" type="Button" parent="CustomGameContainer" unique_id=277666778]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Play"
+
+[node name="BackButton" type="Button" parent="CustomGameContainer" unique_id=994588057]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Back"
+
+[connection signal="pressed" from="DifficultyContainer/BeginnerButton" to="." method="_on_beginner_button_pressed"]
+[connection signal="pressed" from="DifficultyContainer/IntermediateButton" to="." method="_on_intermediate_button_pressed"]
+[connection signal="pressed" from="DifficultyContainer/ExpertButton" to="." method="_on_expert_button_pressed"]
+[connection signal="pressed" from="DifficultyContainer/CustomButton" to="." method="_on_custom_button_pressed"]
+[connection signal="pressed" from="CustomGameContainer/PlayCustomButton" to="." method="_on_play_custom_button_pressed"]
+[connection signal="pressed" from="CustomGameContainer/BackButton" to="." method="_on_back_button_pressed"]
