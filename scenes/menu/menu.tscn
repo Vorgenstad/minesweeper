@@ -4,6 +4,7 @@
 
 [node name="Menu" type="CanvasLayer" unique_id=446605254]
 script = ExtResource("1_klgdb")
+max_size = 30
 
 [node name="DifficultyContainer" type="VBoxContainer" parent="." unique_id=864139032]
 unique_name_in_owner = true

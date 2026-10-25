@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+@export var max_size: int
+
 @onready var _width_input: LineEdit = %WidthInput
 @onready var _height_input: LineEdit = %HeightInput
 @onready var _mines_input: LineEdit = %MinesInput
@@ -45,8 +47,8 @@ func _on_play_custom_button_pressed() -> void:
 		_print_error("Width must be no less than 1")
 		return
 	
-	if width > 100:
-		_print_error("Width must be no more than 100")
+	if width > max_size:
+		_print_error("Width must be no more than " + str(max_size))
 		return
 	
 	if !height_text.is_valid_int():
@@ -59,8 +61,8 @@ func _on_play_custom_button_pressed() -> void:
 		_print_error("Height must be no less than 1")
 		return
 	
-	if height > 100:
-		_print_error("Height must be no more than 100")
+	if height > max_size:
+		_print_error("Height must be no more than " + str(max_size))
 		return
 
 	if !mines_text.is_valid_int():
