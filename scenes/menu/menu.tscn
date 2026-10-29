@@ -8,7 +8,6 @@ max_size = 30
 
 [node name="DifficultyContainer" type="VBoxContainer" parent="." unique_id=864139032]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -44,6 +43,7 @@ text = "Custom"
 
 [node name="CustomGameContainer" type="VBoxContainer" parent="." unique_id=743733970]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
