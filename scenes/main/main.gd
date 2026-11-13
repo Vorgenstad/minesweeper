@@ -1,7 +1,7 @@
 extends Node
 
 func _on_menu_game_start_actioned(settings: GameSettings) -> void:
-	%Menu.visible = false
+	(%Menu as CanvasLayer).visible = false
 
-	%Game.initialize(settings)
-	%Game.visible = true
+	(%Game as Game).initialize(settings)
+	(%Game as Game).visible = true

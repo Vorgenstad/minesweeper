@@ -71,14 +71,14 @@ func _setup(empty_cell_x: int, empty_cell_y: int) -> void:
 			cell.connect("flag_toggled", _on_cell_flag_toggled)
 
 			if cell is EmptyCell:
-				_setup_empty_cell(cell, row, column)
+				_setup_empty_cell(cell as EmptyCell, row, column)
 
 			_grid_container.add_child(cell)
 
 func _clear_grid() -> void:
 	_grid = []
 
-	var children = _grid_container.get_children()
+	var children := _grid_container.get_children()
 
 	for c in children:
 		_grid_container.remove_child(c)
@@ -92,9 +92,9 @@ func _generate_initial_grid() -> void:
 			_grid_container.add_child(cell)
 
 func _randomize_grid() -> void:
-	var flat_grid = _generate_random_flat_grid()
+	var flat_grid := _generate_random_flat_grid()
 
-	var flat_grid_index = 0
+	var flat_grid_index := 0
 
 	for row in _settings.rows:
 		_grid.append([])
@@ -106,18 +106,18 @@ func _randomize_grid() -> void:
 	
 func _generate_random_flat_grid() -> Array[Cell]:
 	var flat_grid: Array[Cell] = []
-	var _mines_to_place = _settings.mines
+	var _mines_to_place := _settings.mines
 
 	for row in _settings.rows:
 		for column in _settings.columns:
 			if (_mines_to_place > 0):
-				var mine_cell = _setup_mine_cell()
+				var mine_cell := _setup_mine_cell()
 
 				flat_grid.append(mine_cell)
 
 				_mines_to_place -= 1
 			else:
-				var empty_cell = empty_cell_scene.instantiate()
+				var empty_cell := empty_cell_scene.instantiate()
 
 				flat_grid.append(empty_cell)
 
@@ -126,7 +126,7 @@ func _generate_random_flat_grid() -> Array[Cell]:
 	return flat_grid
 
 func _setup_mine_cell() -> MineCell:
-	var mine_cell = mine_cell_scene.instantiate()
+	var mine_cell := mine_cell_scene.instantiate()
 
 	mine_cell.connect("pressed", _on_mine_cell_pressed)
 
@@ -135,8 +135,8 @@ func _setup_mine_cell() -> MineCell:
 func _setup_empty_cell(empty_cell: EmptyCell, row: int, column: int) -> void:
 	var value := 0
 
-	for i in _DIRECTIONS:
-		for j in _DIRECTIONS:
+	for i: int in _DIRECTIONS:
+		for j: int in _DIRECTIONS:
 			if _is_outside_grid(row + i, column + j):
 				continue
 
@@ -153,8 +153,8 @@ func _setup_empty_cell(empty_cell: EmptyCell, row: int, column: int) -> void:
 	empty_cell.connect("pressed", _on_empty_cell_pressed.bind(row, column, value))
 
 func _propagate_press(x: int, y: int) -> void:
-	for i in _DIRECTIONS:
-		for j in _DIRECTIONS:
+	for i: int in _DIRECTIONS:
+		for j: int in _DIRECTIONS:
 			if _is_outside_grid(x + i, y + j):
 				continue
 			
@@ -164,11 +164,11 @@ func _propagate_press(x: int, y: int) -> void:
 			## for each cell, causing a stack overflow. We avoid it by just revealing
 			## the cell (which doesn't emit any signal), and continuing the propagation here
 			if cell is EmptyCell and !cell.is_revealed:
-				cell.reveal()
+				(cell as EmptyCell).reveal()
 
 				empty_cell_pressed.emit(cell.flagged)
 
-				if cell.value == 0:
+				if (cell as EmptyCell).value == 0:
 					_propagate_press(x + i, y + j)
 
 func _is_outside_grid(x: int, y: int) -> bool:
@@ -180,11 +180,14 @@ func _on_cell_flag_toggled(flagged: bool) -> void:
 func _on_mine_cell_pressed() -> void:
 	mine_pressed.emit()
 
-func _on_empty_cell_pressed(flagged, x: int, y: int, value: int) -> void:
+func _on_empty_cell_pressed(flagged: bool, x: int, y: int, value: int) -> void:
 	if !_started:
 		_setup(x, y)
 		_started = true
-		_grid[x][y].press()
+
+		var first_cell: EmptyCell = _grid[x][y]
+		first_cell.press()
+
 		return
 
 	empty_cell_pressed.emit(flagged)

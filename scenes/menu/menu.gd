@@ -41,7 +41,7 @@ func _on_play_custom_button_pressed() -> void:
 		_print_error("Please enter a valid number for the width")
 		return
 	
-	var width = int(width_text)
+	var width := int(width_text)
 
 	if width < 1:
 		_print_error("Width must be no less than 1")
@@ -55,7 +55,7 @@ func _on_play_custom_button_pressed() -> void:
 		_print_error("Please enter a valid number for the height")
 		return
 
-	var height = int(height_text)
+	var height := int(height_text)
 
 	if height < 1:
 		_print_error("Height must be no less than 1")
@@ -69,7 +69,7 @@ func _on_play_custom_button_pressed() -> void:
 		_print_error("Please enter a valid number for the mines")
 		return
 
-	var mines = int(mines_text)
+	var mines := int(mines_text)
 
 	if mines < 1:
 		_print_error("Mines must be no less than 1")

@@ -3,12 +3,14 @@ extends CanvasLayer
 
 @export var board_scene: PackedScene
 
+@onready var _top_bar: TopBar = %TopBar
+
 var _settings: GameSettings
 
 var _mine_count: int:
 	set(value):
 		_mine_count = value
-		%TopBar.set_mines_left(_mine_count)
+		_top_bar.set_mines_left(_mine_count)
 
 var _empty_cells_count: int
 
@@ -38,7 +40,7 @@ func _initialize_board() -> void:
 func _start_if_not_started() -> void:
 	if not _started:
 		_started = true
-		%TopBar.start_timer()
+		_top_bar.start_timer()
 
 func _on_board_mine_pressed() -> void:
 	get_tree().paused = true

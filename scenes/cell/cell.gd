@@ -3,20 +3,22 @@ extends PanelContainer
 
 signal flag_toggled(flagged: bool)
 
+@onready var _button: Button = %Button
+
 var flagged := false:
 	set(value):
 		flagged = value
 
 		if flagged:
-			%Button.text = "🚩"
-			%Button.disabled = true
+			_button.text = "🚩"
+			_button.disabled = true
 		else:
-			%Button.text = ""
-			%Button.disabled = false
+			_button.text = ""
+			_button.disabled = false
 
 var is_revealed := false
 
-@abstract func press()
+@abstract func press() -> void
 
 func toggle_flag() -> void:
 	flagged = !flagged

@@ -9,10 +9,10 @@ func press() -> void:
 
 	is_revealed = true
 
-	%Button.visible = false
+	_button.visible = false
 
 	pressed.emit()
 
 func reveal() -> void:
 	assert(!flagged and !is_revealed, "Cannot reveal a flagged or pressed mine.")
-	%Button.text = "X"
+	_button.text = "X"

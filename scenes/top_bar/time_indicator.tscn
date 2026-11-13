@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cq7temj0db75a"]
+
+[ext_resource type="Script" uid="uid://jtm4l045bp0x" path="res://scenes/top_bar/time_indicator.gd" id="1_vfjee"]
+
+[node name="TimeIndicator" type="Label" unique_id=471114930]
+text = "000"
+script = ExtResource("1_vfjee")
+
+[node name="Timer" type="Timer" parent="." unique_id=1940988173]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,4 +1,7 @@
+class_name TimeIndicator
 extends Label
+
+@onready var _timer: Timer = %Timer
 
 var time := 0:
 	set(value):
@@ -7,10 +10,10 @@ var time := 0:
 
 func clear() -> void:
 	time = 0
-	%Timer.stop()
+	_timer.stop()
 	
 func start() -> void:
-	%Timer.start()
+	_timer.start()
 
 func _on_timer_timeout() -> void:
 	time += 1

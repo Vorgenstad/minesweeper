@@ -5,9 +5,9 @@ signal pressed_left
 
 signal pressed_right
 
-func _gui_input(event):
+func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
-		match event.button_index:
+		match (event as InputEventMouseButton).button_index:
 			MOUSE_BUTTON_LEFT:
 				if disabled:
 					return
