@@ -1,27 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://pya3w8g4v7cw"]
+[gd_scene format=3 uid="uid://pya3w8g4v7cw"]
 
-[ext_resource type="Script" path="res://scenes/cell/mine_cell.gd" id="1_ynrlo"]
-[ext_resource type="Script" path="res://scenes/cell/cell_button.gd" id="2_nl77o"]
+[ext_resource type="Script" uid="uid://ctxgcr25stsri" path="res://scenes/cell/mine_cell.gd" id="1_ynrlo"]
+[ext_resource type="Script" uid="uid://bnuqvkcggmhdc" path="res://scenes/cell/cell_button.gd" id="2_nl77o"]
 
-[node name="MineCell" type="PanelContainer"]
-custom_minimum_size = Vector2(50, 50)
+[node name="MineCell" type="PanelContainer" unique_id=1368363635]
+custom_minimum_size = Vector2(30, 30)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1102.0
-offset_bottom = -598.0
+offset_right = -1890.0
+offset_bottom = -1050.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ynrlo")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=521778133]
 unique_name_in_owner = true
 layout_mode = 2
 text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=1329282639]
 unique_name_in_owner = true
 layout_mode = 2
 button_mask = 3
