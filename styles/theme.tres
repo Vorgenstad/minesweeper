@@ -2,16 +2,18 @@
 
 [ext_resource type="StyleBox" uid="uid://c2uj053mu2am0" path="res://styles/button_style_box.tres" id="1_6c8hp"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ouefb"]
-bg_color = Color(0.800491, 0.800491, 0.800491, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_molii"]
+bg_color = Color(0.391819, 0.391819, 0.391819, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1n5n0"]
 bg_color = Color(0, 0, 0, 1)
 
 [resource]
+Button/colors/font_color = Color(0.62559795, 0.62559676, 0.6255971, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
 Button/styles/disabled = ExtResource("1_6c8hp")
-Button/styles/focus = ExtResource("1_6c8hp")
+Button/styles/focus = SubResource("StyleBoxFlat_molii")
 Button/styles/hover = ExtResource("1_6c8hp")
 Button/styles/normal = ExtResource("1_6c8hp")
-Button/styles/pressed = SubResource("StyleBoxFlat_ouefb")
+Button/styles/pressed = ExtResource("1_6c8hp")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_1n5n0")

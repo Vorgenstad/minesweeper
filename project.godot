@@ -36,6 +36,7 @@ window/stretch/mode="viewport"
 [gui]
 
 theme/custom="res://styles/theme.tres"
+theme/custom_font="uid://dvjefyb0tx3mm"
 
 [rendering]
 
