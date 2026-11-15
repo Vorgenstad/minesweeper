@@ -1,12 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://bw8cfxu2r8q3y"]
+[gd_scene format=3 uid="uid://bw8cfxu2r8q3y"]
 
 [ext_resource type="Script" uid="uid://1qmqu7smibo8" path="res://scenes/board/board.gd" id="1_jyebd"]
 [ext_resource type="PackedScene" uid="uid://b8oqe8uikpldw" path="res://scenes/cell/empty_cell.tscn" id="1_uknyb"]
 [ext_resource type="PackedScene" uid="uid://pya3w8g4v7cw" path="res://scenes/cell/mine_cell.tscn" id="2_knosr"]
+[ext_resource type="PackedScene" uid="uid://703r1ygm1yms" path="res://scenes/board/grid_container.tscn" id="4_q07he"]
 
-[node name="Board" type="PanelContainer"]
-offset_right = 536.0
-offset_bottom = 266.0
+[node name="Board" type="PanelContainer" unique_id=1877435790]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_jyebd")
 mine_cell_scene = ExtResource("2_knosr")
 empty_cell_scene = ExtResource("1_uknyb")
+grid_container_scene = ExtResource("4_q07he")

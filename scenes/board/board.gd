@@ -9,6 +9,7 @@ const _DIRECTIONS = [-1, 0, 1]
 
 @export var mine_cell_scene: PackedScene
 @export var empty_cell_scene: PackedScene
+@export var grid_container_scene: PackedScene
 
 var _grid_container: GridContainer
 
@@ -19,7 +20,7 @@ var _settings: GameSettings
 var _started := false
 
 func initialize(settings: GameSettings) -> void:
-	_grid_container = GridContainer.new()
+	_grid_container = grid_container_scene.instantiate()
 	_grid_container.columns = settings.columns
 
 	_settings = settings

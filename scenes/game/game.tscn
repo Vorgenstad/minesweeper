@@ -9,11 +9,15 @@ script = ExtResource("1_b7r1f")
 board_scene = ExtResource("1_dcj2p")
 
 [node name="Container" type="VBoxContainer" parent="." unique_id=718730611]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_right = 120.0
+offset_bottom = 50.0
 grow_horizontal = 2
-grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 alignment = 1
 
 [node name="TopBar" parent="Container" unique_id=2002235728 instance=ExtResource("3_0sr1o")]

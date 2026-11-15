@@ -8,7 +8,16 @@ signal pressed(flagged: bool)
 var surrounding_cells: Array[Cell] = []
 
 func _ready() -> void:
-	(%InnerButton as Button).text = str(value) if value != 0 else ""
+	var inner_button: Button = %InnerButton
+
+	if value > 0:
+		var color := inner_button.get_theme_color("value_" + str(value))
+
+		inner_button.add_theme_color_override("font_color", color)
+		inner_button.add_theme_color_override("font_hover_color", color)
+		inner_button.add_theme_color_override("font_pressed_color", color)
+
+		inner_button.text = str(value)
 
 func press() -> void:
 	if is_revealed:
