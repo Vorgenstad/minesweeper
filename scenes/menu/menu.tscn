@@ -34,21 +34,37 @@ alignment = 1
 [node name="BeginnerButton" type="Button" parent="VBoxContainer/VBoxContainer/DifficultyContainer" unique_id=2085950822]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0.96862745, 1)
+theme_override_colors/font_focus_color = Color(0.19693032, 0.42620608, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.19693032, 0.42620608, 1, 1)
+theme_override_colors/font_hover_color = Color(0.19693032, 0.42620608, 1, 1)
 text = "Beginner"
 
 [node name="IntermediateButton" type="Button" parent="VBoxContainer/VBoxContainer/DifficultyContainer" unique_id=1821470719]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.003921569, 0.49411765, 0.003921569, 1)
+theme_override_colors/font_focus_color = Color(0.0069214185, 0.70726657, 0.0072404053, 1)
+theme_override_colors/font_pressed_color = Color(0.007657843, 0.7850523, 0.0082653975, 1)
+theme_override_colors/font_hover_color = Color(0.0069214185, 0.70726657, 0.0072404053, 1)
 text = "Intermediate"
 
 [node name="ExpertButton" type="Button" parent="VBoxContainer/VBoxContainer/DifficultyContainer" unique_id=1866516512]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.9647059, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.47229308, 0.40431708, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.47229308, 0.40431708, 1)
+theme_override_colors/font_hover_color = Color(1, 0.47229308, 0.40431708, 1)
 text = "Expert"
 
 [node name="CustomButton" type="Button" parent="VBoxContainer/VBoxContainer/DifficultyContainer" unique_id=1692960896]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.5019608, 0, 0.5019608, 1)
+theme_override_colors/font_focus_color = Color(0.8379867, 0.0005538887, 0.8379805, 1)
+theme_override_colors/font_pressed_color = Color(0.8379867, 0.0005538887, 0.8379805, 1)
+theme_override_colors/font_hover_color = Color(0.8379867, 0.0005538887, 0.8379805, 1)
 text = "Custom"
 
 [node name="CustomGameContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer" unique_id=743733970]
