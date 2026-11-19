@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://ghrdr2ek5idv" path="res://scenes/top_bar/top_bar.gd" id="1_3ftgv"]
 [ext_resource type="PackedScene" uid="uid://cq7temj0db75a" path="res://scenes/top_bar/time_indicator.tscn" id="2_e8je8"]
+[ext_resource type="Texture2D" uid="uid://b45ne0iemwrc" path="res://icons/dead.png" id="3_ewrre"]
+[ext_resource type="Texture2D" uid="uid://crljnojm5xruf" path="res://icons/smile.png" id="3_q8e2t"]
+[ext_resource type="Texture2D" uid="uid://dys0v62mvm00b" path="res://icons/cool.png" id="3_tmr20"]
 
 [node name="TopBar" type="HBoxContainer" unique_id=1852891426]
 anchors_preset = 10
@@ -12,16 +15,23 @@ size_flags_vertical = 0
 layout_direction = 2
 alignment = 1
 script = ExtResource("1_3ftgv")
+normal_texture = ExtResource("3_q8e2t")
+win_texture = ExtResource("3_tmr20")
+loss_texture = ExtResource("3_ewrre")
 
 [node name="MinesLeft" parent="." unique_id=1493845018 instance=ExtResource("2_e8je8")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "00"
 
-[node name="RestartButton" type="Button" parent="." unique_id=391890336]
+[node name="RestartButton" type="TextureButton" parent="." unique_id=86086918]
+unique_name_in_owner = true
 process_mode = 3
+custom_maximum_size = Vector2(40, 40)
+propagate_maximum_size = true
 layout_mode = 2
-text = "Restart"
+texture_normal = ExtResource("3_q8e2t")
+stretch_mode = 0
 
 [node name="TimeIndicator" parent="." unique_id=1317286547 instance=ExtResource("2_e8je8")]
 unique_name_in_owner = true

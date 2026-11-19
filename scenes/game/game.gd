@@ -42,9 +42,17 @@ func _start_if_not_started() -> void:
 		_started = true
 		_top_bar.start_timer()
 
+func _display_win() -> void:
+	_board.display_win()
+	_top_bar.display_win()
+
+func _display_loss() -> void:
+	_board.display_loss()
+	_top_bar.display_loss()
+
 func _on_board_mine_pressed() -> void:
 	get_tree().paused = true
-	_board.display_loss()
+	_display_loss()
 
 func _on_board_empty_cell_pressed(flagged: bool) -> void:
 	_start_if_not_started()
@@ -56,7 +64,7 @@ func _on_board_empty_cell_pressed(flagged: bool) -> void:
 
 	if _empty_cells_count == 0:
 		get_tree().paused = true
-		_board.display_win()
+		_display_win()
 
 func _on_top_bar_restart_actioned() -> void:
 	get_tree().paused = false

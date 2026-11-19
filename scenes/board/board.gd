@@ -35,7 +35,6 @@ func reset() -> void:
 	_generate_initial_grid()
 
 func display_win() -> void:
-	print("You win")
 	for row in _grid.size():
 		for column in _grid[0].size():
 			var cell: Cell = _grid[row][column]
@@ -44,7 +43,6 @@ func display_win() -> void:
 				cell.toggle_flag()
 
 func display_loss() -> void:
-	print("You lose")
 	for row in _grid.size():
 		for column in _grid[0].size():
 			var cell: Cell = _grid[row][column]
